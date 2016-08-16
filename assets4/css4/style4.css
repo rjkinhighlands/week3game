@@ -1,0 +1,23 @@
+html{
+	max-width: 100%;
+}
+body{
+	background-image: url("assets4/images4/background4.jpg");
+	max-width: 100%;
+}
+h1, p{
+	text-align: center;
+}
+
+#available{
+	letter-spacing: length;
+}
+
+.container{
+	margin: 2% 0%;
+	margin-left: 5%;
+	max-width: 100%;
+}
+
+
+
