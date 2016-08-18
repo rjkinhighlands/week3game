@@ -1,17 +1,17 @@
+
 html{
-	position: relative;
 	max-width: 100%;
 }
 body{
 	background-image: url(../images4/background4.jpg);
-	max-width: 100%;
-	padding-top: 5%;
+	padding-top: 3%;
 }
 h1 {
 	text-align: center;
 	font-family: 'Lakki Reddy', cursive;
 	font-size: 25px;
 	font-weight:bold;
+	color: violet;
 }
 p {
 	font-family: 'Lakki Reddy', cursive;
@@ -19,18 +19,28 @@ p {
 	line-height: 25px;
 	text-align: center;
 	padding-top: 5%;
+	color: orange;
+}
+h2 {
+	text-align: center;
+	font-family: 'Lakki Reddy', cursive;
+	font-size: 20px;
+	line-height: 25px;
+	color: violet;
+}
+button{
+	margin: 0 auto;
 }
 .container {
 	max-width: 100%;
 	float: center;
 }
-#coverphoto {
-	padding-left: 12% 0 0% 0;
-	float: center;
+#profile-pic {
+	width: 145%;
 }
-.panel-default > .panel-body {
-	padding: 12% 0 12% 0;
+#gameinfo{
+	display: none;
 }
-
-
-
+#setlist{
+	display: none;
+}
