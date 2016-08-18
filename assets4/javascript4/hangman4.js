@@ -13,21 +13,22 @@ $('#start').click(function() {
 
 });
 }
-
+ var song = ["truckin", "touch of grey", "sugar magnolia", "casey jones", "uncle johns band", "friend of the devil", "franklin tower", "estimated prophet", "eyes of the world", "box of rain", "us blues", "the golden road", "one more saturday night", "fire on the mountain", "the music never stopped", "hell in a bucket", "ripple"];
+	var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+	var hiddenSong = [];
+	var guessed = [];
+	var wins = [];
+	var losses =[];	 
 //FUNCTION DECLARATIONS//
 function playGame(){
  	$('#gameinfo').show();
  	$('lives').show();
 
 //Intializes//
-	var song = ["truckin", "touch of grey", "sugar magnolia", "casey jones", "uncle johns band", "friend of the devil", "franklin tower", "estimated prophet", "eyes of the world", "box of rain", "us blues", "the golden road", "one more saturday night", "fire on the mountain", "the music never stopped", "hell in a bucket", "ripple"];
-	var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-	var hiddenSong = [];
-	var guessed = [];
-	var wins = [];
-	var losses =[];	 
-	var word = song[Math.floor(Math.random()*song.length)] 
-		populateHidden(word, hiddenSong);
+	
+	var word = song[Math.floor(Math.random()*song.length)];
+	console.log(word);
+		populateHidden(word);
 			listArray(hiddenSong, '#hidden');
 			listArray(alphabet, '#available');
 			listArray(guessed, '#guessed');
@@ -35,6 +36,7 @@ function playGame(){
 //Keyup Event//
 document.onkeyup = function(event){
 	var keyPress = String.fromCharCode(event.keyCode).toLowerCase();
+	alert(keyPress);
 	var indexTest = word.indexOf(keyPress);
 	var alphaIndex = alphabet.indexOf(keyPress);
 		letterTest(keyPress, word, hiddenSong);
@@ -48,18 +50,20 @@ document.onkeyup = function(event){
 }
 
 ///Populates Array//
-	function populateHidden( word, arr2){
+	function populateHidden( word ){
 		for(var i = 0; i < word.length; i++){
+			console.log(word[i]);
 		if(word[i] == "\xa0"){
-				arr2.push("\xa0")
+				hiddenSong.push("\xa0")
 			}
-		else if(word[i] == "-"){
-				arr2.push("-")
+		else if(word[i] == " "){
+				hiddenSong.push(" ")
 			}
 		else{
-				arr2.push("_")
+				hiddenSong.push("_")
 			}
 		}
+		$("#hiddensong").html(hiddenSong);
 	}
 
 //Print Array to DOM// JQuery//
@@ -96,6 +100,7 @@ document.onkeyup = function(event){
 	listArray(hiddenSong, '#hidden');
 			}
 		}
+		$("#hiddensong").html(hiddenSong);
 	}
 
 //Removes Letters//
