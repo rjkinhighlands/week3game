@@ -139,3 +139,7 @@ document.onkeyup = function(event){
 	playGame();
 		}
 	}
+	function startagain(){
+
+	window.location.reload(true);
+}
