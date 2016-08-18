@@ -1,4 +1,5 @@
 	var wins = 0;
+	var losses = 0;
 
 window.onload = function(){
 
@@ -16,14 +17,15 @@ $('#start').click(function() {
 //FUNCTION DECLARATIONS//
 function playGame(){
  	$('#gameinfo').show();
+ 	$('lives').show();
 
 //Intializes//
 	var song = ["truckin", "touch of grey", "sugar magnolia", "casey jones", "uncle johns band", "friend of the devil", "franklin tower", "estimated prophet", "eyes of the world", "box of rain", "us blues", "the golden road", "one more saturday night", "fire on the mountain", "the music never stopped", "hell in a bucket", "ripple"];
 	var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 	var hiddenSong = [];
-	var lives = [];
 	var guessed = [];
-	var guesses = 0;  
+	var wins = [];
+	var losses =[];	 
 	var word = song[Math.floor(Math.random()*song.length)] 
 		populateHidden(word, hiddenSong);
 			listArray(hiddenSong, '#hidden');
@@ -38,7 +40,7 @@ document.onkeyup = function(event){
 		letterTest(keyPress, word, hiddenSong);
 		alphaTest(keyPress, alphabet);
 		loser(indexTest, alphaIndex, keyPress, guessed, guesses);
-		listArray(guessed, '#guesses');
+		listArray(guessed, '#guessed');
 		listArray(alphabet, '#available');
 		isOver(guessed, song);
 		winner(word, hiddenSong, wins, song);
@@ -83,13 +85,7 @@ document.onkeyup = function(event){
 	}
 		if (indexTest == -1 && alphaIndex > -1){
 				arr.push(keyPress);
-	var lifeNum = "#life"+guesses; 
-	console.log(lifeNum);
-				$(lifeNum).attr("src", "gratefuldead.jpg");
-				guesses++; 
-	console.log(guesses);
 		}
-		return guesses; 
 	}
 	
 //Tests Game Letters//
@@ -128,17 +124,18 @@ document.onkeyup = function(event){
 	var noSpacesSong = arr.join("");
 	console.log(noSpacesSong);
 			
-		$('#artistTitle').html("Right On! U Guessed "+stringSong+" correctly! Now fire up the next GREATEST HIT!");
-			//$('#artistpic').html("<img src = '"+noSpacesRapper+".jpg' class = 'responsive'>")//
+		$('#songtTitle').html("Right On! U Guessed "+stringSong+" correctly! Now fire up the next GREATEST HIT!");			
 		}
 	}
 
 //Function Game Over//
 	function isOver(arr, song){
 		if (arr.length > 10){
-	var loser = new Audio(/assets4/sounds4/We Bid You Goodnight (Live).mp3);
+	var loser = new Audio(webidyougoodnight.mp3);
 	alert("We Bid You Goodnight");
-			loser.play();
+		loser.play();
+		$('#losses').append(losses);
+		$('#artist').show();
 	playGame();
 		}
 	}
